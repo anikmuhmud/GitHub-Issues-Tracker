@@ -1,4 +1,7 @@
 
+if (localStorage.getItem("isLoggedIn") !== "true") {
+  window.location.href = "login.html";
+}
 const BASE_URL = "https://phi-lab-server.vercel.app/api/v1/lab";
 let allIssues = [];
 let currentTab = "all";
@@ -65,18 +68,38 @@ function renderIssues() {
       issue.status.toLowerCase() === "open" ? "border-green-500" : "border-purple-600"
     }`;
 
+    
+// "id": 2,
+// "title": "Add dark mode support",
+// "description": "Users are requesting a dark mode option. This would improve accessibility and user experience.",
+// "status": "open",
+// "labels": [
+// "enhancement",
+// "good first issue"
+// ],
+// "priority": "medium",
+// "author": "sarah_dev",
+// "assignee": "",
+// "createdAt": "2024-01-14T14:20:00Z",
+// "updatedAt": "2024-01-16T09:15:00Z"
+// },
     card.innerHTML = `
       <div class="p-5">
+        <div class="flex justify-between items-center">
+     <span class="px-2.5 py-1 rounded-full ${issue.status.toLowerCase() === 'open' ? 'bg-green-500 text-white' : 'bg-purple-600 text-white'} text-sm font-medium">
+      ${issue.status}
+    </span>
+          <span class="px-2.5 py-1 bg-gray-100 btn border-2 rounded-full">${issue.priority}</span>
+        </div>
         <h3 class="font-semibold text-lg mb-2 line-clamp-2">${issue.title}</h3>
         <p class="text-gray-600 text-sm mb-4 line-clamp-3">${issue.description || "No description"}</p>
         <div class="flex flex-wrap gap-2 text-sm">
-          <span class="px-2.5 py-1 bg-gray-100 rounded-full">${issue.status}</span>
-          <span class="px-2.5 py-1 bg-gray-100 rounded-full">${issue.priority}</span>
+          
           ${issue.labels.map(l => `<span class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-full">${l}</span>`).join("")}
         </div>
-        <div class="mt-4 text-xs text-gray-500">
-          <span>By ${issue.author}</span>
-          <span class="mx-2">•</span>
+        <div class="mt-4 text-[16px]  space-y-5 ">
+          <span>By ${issue.author}</span><br/>
+          
           <span>${new Date(issue.createdAt).toLocaleDateString()}</span>
         </div>
       </div>
@@ -90,14 +113,28 @@ function renderIssues() {
 function showModal(issue) {
   modalTitle.textContent = issue.title;
   modalContent.innerHTML = `
-    <p><strong>Description:</strong> ${issue.description || "No description provided."}</p>
-    <p><strong>Status:</strong> ${issue.status}</p>
-    <p><strong>Priority:</strong> ${issue.priority}</p>
-    <p><strong>Author:</strong> ${issue.author}</p>
-    <p><strong>Labels:</strong> ${issue.labels.join(", ") || "None"}</p>
-    <p><strong>Created:</strong> ${new Date(issue.createdAt).toLocaleString()}</p>
-    <p><strong>Last Updated:</strong> ${new Date(issue.updatedAt).toLocaleString()}</p>
-    ${issue.assignee ? `<p><strong>Assignee:</strong> ${issue.assignee}</p>` : ""}
+   
+     <div class="p-5">
+        <div class="flex justify-between items-center">
+     <span class="px-2.5 py-1 rounded-full ${issue.status.toLowerCase() === 'open' ? 'bg-green-500 text-white' : 'bg-purple-600 text-white'} text-sm font-medium">
+      ${issue.status}
+    </span>
+          <span class="px-2.5 py-1 bg-gray-100 btn border-2 rounded-full">${issue.priority}</span>
+        </div>
+        <h3 class="font-semibold text-lg mb-2 line-clamp-2">${issue.title}</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${issue.description || "No description"}</p>
+        <div class="flex flex-wrap gap-2 text-sm">
+          
+          ${issue.labels.map(l => `<span class="px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-full">${l}</span>`).join("")}
+        </div>
+        <div class="mt-4 text-[16px]  space-y-5 ">
+          <span>By ${issue.author}</span><br/>
+          <span>${new Date(issue.createdAt).toLocaleDateString()}</span>
+
+        </div>
+     <p><strong>Last Updated:</strong> ${new Date(issue.updatedAt).toLocaleString()}</p>
+    ${issue.assignee ? `<p><strong>Assignee:</strong> ${issue.assignee}</p>` : `<strong>Assignee: Mahmudul hasan anik</strong>`}
+      </div>
   `;
   modal.classList.remove("hidden");
 }
@@ -109,5 +146,5 @@ searchInput.addEventListener("keypress", e => { if (e.key === "Enter") fetchIssu
 closeModal.addEventListener("click", () => modal.classList.add("hidden"));
 modal.addEventListener("click", e => { if (e.target === modal) modal.classList.add("hidden"); });
 
-// Initial load
+
 fetchIssues();
