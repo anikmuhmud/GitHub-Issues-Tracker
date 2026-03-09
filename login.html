@@ -60,22 +60,23 @@
 
 
     <script>
-        document.getElementById("loginForm").addEventListener("click", function(event){
-            event.preventDefault();
-        })
-        document.getElementById("btn-signin").addEventListener("click", function (){
-             const userName = document.getElementById("username").value.trim()
-            const password = document.getElementById("password").value.trim()
+       document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
 
-            if( userName === "admin" && password === "admin123"){
-                window.location.assign("/index.html")
-                
-            }else{
-               alert("invalid pass")
-               
-            }
-        })
-        
+      if (user === "admin" && pass === "admin123") {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "index.html";
+      } else {
+        document.getElementById("errorMsg").classList.remove("hidden");
+      }
+    });
+
+    // Prevent going back to login if already logged in
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      window.location.href = "index.html";
+    }
     </script>
 </body>
 </html>
