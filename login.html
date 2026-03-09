@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in</title>
+    <!-- style -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+
+   <div class="min-h-screen  flex items-center justify-center">
+     <div class="card w-full max-w-md bg-white shadow-xl p-8 rounded-xl">
+    <!-- Logo + Title -->
+    <div class="text-center mb-8">
+      <img src="./assingment_5/assets/github-logo.png" alt="Logo" class="mx-auto mb-4 h-16 w-16">
+      <h1 class="text-3xl font-bold text-gray-800">GitHub Issues Tracker</h1>
+      <p class="text-gray-500 mt-1">Manage your GitHub-like issues</p>
+    </div>
+
+    <!-- Form -->
+    <form id="loginForm" class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" id="username" class="mt-1 block p-3 w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="admin" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" class="mt-1 block p-3 w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="••••••" required>
+      </div>
+
+      <button type="submit" class="w-full btn btn-primary bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition">
+        Sign In
+      </button>
+    </form>
+
+    <div class="mt-6 text-center  space-y-4">
+        <h2 class="text-[20px]"> Demo credentials:</h2>
+      <div>
+          <h3><strong>username:</strong> admin</h3>
+       <P><strong>password: </strong> admin123</P>
+      </div>
+    </div>
+
+    <p id="errorMsg" class="mt-4 text-red-600 text-center hidden">Invalid credentials</p>
+  </div>
+   </div>
+
+
+
+    <script>
+
+    </script>
+</body>
+</html>
