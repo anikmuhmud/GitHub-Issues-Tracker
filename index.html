@@ -10,9 +10,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen">
   
-    <div><h1>hell</h1></div>
+     <!-- Navbar -->
+  <nav class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2">
+            <img  src="./assingment_5/assets/github-logo.png" alt="" width="50px" height="50px">
+          <span class="text-xl font-bold text-gray-800 ">Issues Tracker</span>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <input id="searchInput" type="text" placeholder="Search issues..." class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <button id="searchBtn" class="btn bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Search</button>
+        </div>
+      </div>
+    </div>
+  </nav>
     
 </body>
 </html>
