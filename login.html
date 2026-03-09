@@ -7,8 +7,15 @@
     <!-- style -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="style.css">
+   
+
+    <style>
+        #font-family{
+       font-family: "Geist", sans-serif;
+    }
+    </style>
 
 </head>
 <body>
@@ -30,10 +37,10 @@
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" class="mt-1 block p-3 w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="••••••" required>
+        <input type="password" id="password" class="mt-1 block p-3 w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="........" required>
       </div>
 
-      <button type="submit" class="w-full btn btn-primary bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition">
+      <button id="btn-signin" type="submit" class="w-full btn btn-primary bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition">
         Sign In
       </button>
     </form>
@@ -53,7 +60,22 @@
 
 
     <script>
+        document.getElementById("loginForm").addEventListener("click", function(event){
+            event.preventDefault();
+        })
+        document.getElementById("btn-signin").addEventListener("click", function (){
+             const userName = document.getElementById("username").value.trim()
+            const password = document.getElementById("password").value.trim()
 
+            if( userName === "admin" && password === "admin123"){
+                window.location.assign("/index.html")
+                
+            }else{
+               alert("invalid pass")
+               
+            }
+        })
+        
     </script>
 </body>
 </html>
