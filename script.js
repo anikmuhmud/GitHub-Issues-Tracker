@@ -146,5 +146,5 @@ searchInput.addEventListener("keypress", e => { if (e.key === "Enter") fetchIssu
 closeModal.addEventListener("click", () => modal.classList.add("hidden"));
 modal.addEventListener("click", e => { if (e.target === modal) modal.classList.add("hidden"); });
 
-
+// Initial load
 fetchIssues();
